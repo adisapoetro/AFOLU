@@ -4,7 +4,7 @@ Title: What the Package Does (Title Case)
 Version: 0.1.0
 Author: Matt Ramlow
 Maintainer: Matt Ramlow <mramlow18@gmail.com>
-Description: This package implements the equations for conducting a greenhouse gas (GHG) inventory for the agriculture, forestry and other land use (AFOLU) sector based on Tier 1 equations from the 2006 Intergovernmental Panel on Climate Change (IPCC) Guidelines for National GHG Inventories <https://www.ipcc-nggip.iges.or.jp/public/2006gl/> 
-License: What license is it under?
+Description: This package implements the equations for conducting a greenhouse gas (GHG) inventory for the agriculture, forestry and other land use (AFOLU) sector based on Tier 1 equations from the 2006 Intergovernmental Panel on Climate Change (IPCC) Guidelines for National GHG Inventories <https://www.ipcc-nggip.iges.or.jp/public/2006gl/>
+License: GNU General Public License v3.0
 Encoding: UTF-8
 LazyData: true
