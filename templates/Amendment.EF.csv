@@ -1,0 +1,20 @@
+Amendment.Type,N.Type,C.Type,N.A,EF.CO2.U,EF.CO2.L
+Ammonium nitrate,Synthetic,NA,0.335,,
+Ammonium sulphate,Synthetic,NA,0.21,,
+Calcium nitrate,Synthetic,NA,0.155,,
+CAN,Synthetic,NA,0.26,,
+DAP,Synthetic,NA,0.18,,
+MAP,Synthetic,NA,0.11,,
+NP compounds,Synthetic,NA,,,
+NPK blend (specified),Synthetic,NA,1,,
+NPK blend (unspecified),Synthetic,NA,,,
+Other N fertilizer,Synthetic,NA,,,
+Other straight N,Synthetic,NA,1,,
+Potassium nitrate,Synthetic,NA,0.13,,
+Sodium nitrate,Synthetic,NA,0.16,,
+Urea,Synthetic,Urea,0.46,0.2,
+Organic fertilizer,Organic,NA,0.1,,
+Compost,Organic,NA,,,
+Sewage sludge,Organic,NA,,,
+Dolomite,NA,Lime,,,0.13
+Limestone,NA,Lime,,,0.12

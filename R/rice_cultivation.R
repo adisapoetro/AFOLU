@@ -1,4 +1,4 @@
-#3.C.7 Rice Cultivation
+### 3.C.7 Rice Cultivation
 
 # A.FR = A.H * f.FR                                           #Estimates the area of flooded rice cultivation
 # SF.PWR = f.PWR * SF
@@ -24,6 +24,27 @@
 # EF.CH4.FR  = single value
 # GWP.CH4    = single value
 
-rice_cultivation <- function(rice_area, RC.EF.CH4) {
-  #equations
+rice_cultivation <- function(CM.AD, RC.EF = IPCC.2006.RC.EF) {
+  
+  # Format the activity data and emission factors
+  RC.AD <- CM.AD %>% filter(Crop.Type == "Flooded Rice")
+  T.A.H <- CM.AD %>% group_by(Year) %>% summarize(T.A.H = sum(A.H))
+  f.FR <- left_join(RC.AD, T.A.H, by = "Year") %>% mutate(f.FR = A.H / T.A.H) %>% select(Year,f.FR)
+  RC <- left_join(RC.AD, RC.EF, by = "Crop.Type")
+  
+  # Estimates total CH4 emissions from rice cultivations by year
+  RC.Y <- RC %>% mutate(Year = as.factor(Year),
+                        EF.CH4 = (N * EF.CH4.EF) / 10^6, # Estimates CH4 emissions from enteric fermentation
+                        MM.CH4 = (N * EF.CH4.MM) / 10^6, # Estimates CH4 emissions from manure management
+                        MM.N2O.D = N * Nex * (TAM / 1000) * 365 * f.MMS * EF.N2O.MM * (44/28), # Estimates direct N2O emissions from manure management
+                        MM.N2O.I = N * Nex * (TAM / 1000) * 365 * f.MMS * f.DV.MMS * EF.N2O.DV * (44 / 28), # Estimates indirect N2O emissions from manure management
+                        N.UD = ifelse(MMS == "PRP", N * Nex * (TAM / 1000) * 365 * f.MMS, 0), # Estimates the N deposited on pasture, range and paddock
+                        N.MA = ifelse(MMS == "PRP", 0, N * f.MMS * (Nex * (TAM / 1000) * 365 * (1 - f.L.MMS) + N.Bed)), # Estimates the managed manure N available for application
+                        N.M = N.MA * (1 - (f.FEED + f.FUEL + f.CNST))) %>% # Estimates the animal manure applied to soils
+                 group_by(Year) %>%
+                 summarize(RC.CH4 = sum(RC.CH4))
+  
+  # Returns a list of 1) CH4 emissions from rice cultivation by year
+  #                   2) the fraction of flooded rice within total croplands
+  return(RC.Y, f.FR)
 }

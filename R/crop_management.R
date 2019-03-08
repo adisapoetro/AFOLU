@@ -44,3 +44,11 @@
 # SCF        = f(Crop.LU,Crop.Management,Crop.Inputs);
 # T.SCF      = f(LUC);
 # EF.CO2.OS  = f(LU.Subcategory);
+
+crop_management <- function(CM.AD, CM.EF = IPCC.2006.CM.EF) {
+  
+  # Estimate the fraction of total croplands consisting of flooded rice
+  RC.AD <- CM.AD %>% filter(Crop.Type == "Flooded Rice")
+  T.A.H <- CM.AD %>% group_by(Year) %>% summarize(T.A.H = sum(A.H))
+  f.FR <- left_join(RC.AD, T.A.H, by = "Year") %>% mutate(f.FR = A.H / T.A.H) %>% select(Year,f.FR)
+}

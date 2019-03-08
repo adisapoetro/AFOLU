@@ -1,0 +1,16 @@
+Crop.Type,Rice.Management.Type,Scaling.Factor,CP,f.A.FR,SF,ROA,CFOA
+Rice,Upland,Water Regime during Cultivation,90,0.25,0,,
+Rice,Continuously Flooded,Water Regime during Cultivation,90,0.4,1,,
+Rice,Intermittently Flooded - Single Aeration,Water Regime during Cultivation,90,0.05,0.6,,
+Rice,Intermittently Flooded - Multiple Aerations,Water Regime during Cultivation,90,0.05,0.52,,
+Rice,Rainfed - Regular,Water Regime during Cultivation,90,0.2,0.28,,
+Rice,Rainfed - Drought Prone,Water Regime during Cultivation,90,0.05,0.25,,
+Rice,Deep Water,Water Regime during Cultivation,90,0,0.31,,
+Rice,Non Flooded Pre-season <180 Days,Pre-season Water Regime,,0.5,1,,
+Rice,Non Flooded Pre-season >180 Days,Pre-season Water Regime,,0.25,0.68,,
+Rice,Flooded Pre-season >30 Days,Pre-season Water Regime,,0.25,1.9,,
+Rice,Straw Incorporated <30 Days before Cultivation,Organic Amendment,,,,5,1
+Rice,Straw Incorporated >30 Days before Cultivation,Organic Amendment,,,,10,0.29
+Rice,Compost,Organic Amendment,,,,7,0.05
+Rice,Farm Yard Manure,Organic Amendment,,,,3,0.14
+Rice,Green Manure,Organic Amendment,,,,2,0.5

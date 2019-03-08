@@ -73,7 +73,7 @@
 
 ### 3.C.4 Direct N2O Emissions from Managed Soils
 
-# f.A.FR = left_join(Crops.AD,A.CG,by="Year") %>% mutate(f.A.FR=A.H/A.CG) %>% filter(Crop=="Flooded Rice")    #Estimates the fraction of total croplands and grasslands under flooded rice
+# f.FR = left_join(Crops.AD,A.CG,by="Year") %>% mutate(f.A.FR=A.H/A.CG) %>% filter(Crop=="Flooded Rice")    #Estimates the fraction of total croplands and grasslands under flooded rice
 # NI.N2O = (N.SN + N.ON + N.CR + N.SOM) * (((1 - f.FR) * EF.N2O.NI) + (f.FR * EF.N2O.NI.FR)) * (44 / 28)      #Calculates the total annual direct N2O emissions from N inputs
 # UD.N2O = N.UD * EF.N2O.UD * (44 / 28)                                                                       #Calculates the annual direct N2O emissions from urine and dung deposited to grazed soil (IPCC 2006, Vol 4 Ch 11, Eq 11.1)
 # MS.N2O.D = NI.N2O + UD.N2O + OS.N2O                                                                         #Calculates the total annual direct N2O emissions from managed soils
@@ -103,6 +103,22 @@
 # EF.N2O.LR  = single value
 # GWP.N2O    = single value
 
-managed_soil <- function(fertilizer, MM.EF.DN2O, MM.EF.IN2O) {
-  #equations
+managed_soil <- function(L.AD, L.EF = IPCC.2006.L.EF,
+                         MM.AD, MM.EF = IPCC.2006.MM.EFSA.EF,
+                         SA.AD, SA.EF = IPCC.2006.SA.EF) {
+  
+  # Format the activity data and emission factors
+  L.N <- livestock(L.AD, L.EF, MM.AD, MM.EF)[4]
+  A.N <- soil_amendments(SA.AD, SA.EF)[2]
+  CR.N <- crop_management(CM.AD, CM.EF)[1]
+  S.N <- soils(LUC.AD, LUC.EF)[1]
+  
+  # Estimates total enteric fermentation and manure management GHG emissions and N inputs from livestock by year and livestock type
+  MS <- T.N %>% mutate(Year = as.factor(Year),
+                       NI.N2O = (N.SN + N.ON + N.CR + N.SOM) * (((1 - f.FR) * EF.N2O.NI) + (f.FR * EF.N2O.NI.FR)) * (44 / 28),
+                       UD.N2O = N.UD * EF.N2O.UD * (44 / 28),
+                       OS.N2O = A.OS * EF.N2O.OS * (44 / 28))
+
+  # Returns a list of N2O emissions from managed soil by year
+  return(MS)
 }
