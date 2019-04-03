@@ -1,33 +1,8 @@
-Livestock.Subtype,Pasture/Range/Paddock,Pit Storage,Solid Storage,Daily Spread,Anaerobic Digester,
-General,,,,,,
-Market Swine,,,,,Liquid/Slurry w/o Crust Cover,
-Poultry,,,Uncovered Anaerobic Lagoon,,,
-Buffalo,,,,,,
-Other Cattle,,,,,,Composting Passive Windrow
-Breeding Swine,,,,,,Poultry Manure w/ Litter
-Dairy Cattle,,,,,,Poultry Manure w/o Litter
-Horses,,,,,,
-Fur-Bearing Animals,,,,,,Forced Aeration Systems
-Sheep,,,,,,Liquid/Slurry w/ Crust Cover
-Swine,,,,,,
-Turkeys,,,,,,Composting In-Vessel
-Camels,,,,,,Composting Static Pile
-Mules and Asses,,,,,,Natural Aeration Systems
-Pullets,,,,,,Composting Intensive Windrow
-Hens,,,,,,Deep Bedding No Mixing
-Other Chickens,,,,,,Dry Lot
-Ducks,,,,,,Deep Bedding Active Mixing
-Broilers,,,,,,Deep Bedding
-Goats,,,,,,Liquid/Slurry
-Rabbits,,,,,,Anaerobic Lagoon
-Ferret,,,,,,
-Mink,,,,,,
-Fox,,,,,,
-Racoon,,,,,,
-Layers (dry),,,,,,
-Layers (wet),,,,,,
-Deer,,,,,,
-Reindeer,,,,,,
-Alpacas,,,,,,
-Llamas,,,,,,
-Other,,,,,,
+Livestock.Subtype,PRP,PS,SS,DS,AD,UAL,C,DB
+Dairy Cattle,0.5,0.25,0.2,0,0.05,0,0,0
+Other Cattle,1,0,0,0,0,0,0,0
+Sheep,1,0,0,0,0,0,0,0
+Goat,1,0,0,0,0,0,0,0
+Breeding Swine,0,0.5,0.5,0,0,0,0,0
+Market Swine,0,0.5,0.5,0,0,0,0,0
+Poultry,0.5,0.25,0,0.25,0,0,0,0
